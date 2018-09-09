@@ -30,21 +30,43 @@ document.addEventListener('DOMContentLoaded', () => {
       button.onclick = () => {
         const action = button.dataset.action;
         if (action === 'create') {
-          if (!document.getElementById('channel-name')){
-            const newchannel = `
-              <div class="p-3 border-bottom">
-                <input id="channel-name" class="form-control form-control-sm" type="text" autofocus="true" placeholder="Channel name">
-              </div>
-            `
-            document.getElementById('channel-list').innerHTML += newchannel;
-            document.getElementById('new-channel').innerHTML = '<strong>✓</strong> Create';
+
+          function release() {
+            if (document.getElementById('new-channel-name')){
+              document.getElementById('new-channel-name').parentNode.remove();
+              document.getElementById('new-channel').innerHTML = '<strong>+</strong> New channel';
+            }
           }
-          else if (document.getElementById('channel-name').value){
+
+          function create(name) {
             socket.emit('create channel', {
               'creator': localStorage.getItem('username'),
-              'name': document.getElementById('channel-name').value
+              'name': name
             });
-            document.getElementById('new-channel').innerHTML = '<strong>+</strong> New channel';
+            release();
+          }
+
+          if (!document.getElementById('new-channel-name')){
+            const newchannel = `
+              <div class="p-3 border-bottom">
+                <input id="new-channel-name" class="form-control form-control-sm" type="text" autofocus="true" placeholder="Channel name">
+              </div>
+            `
+
+            document.getElementById('channel-list').innerHTML += newchannel;
+            document.getElementById('new-channel').innerHTML = '<strong>✓</strong> Create';
+
+            document.getElementById('new-channel-name').onkeyup = event => {
+              if (event.keyCode === 27) {
+                release();
+              }
+              else if (event.keyCode === 13) {
+                create(document.getElementById('new-channel-name').value);
+              }
+            }
+          }
+          else if (document.getElementById('new-channel-name').value) {
+            create(document.getElementById('new-channel-name').value)
           }
         }
         else if (action === 'channel' && button.dataset.id) {
