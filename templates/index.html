@@ -3,6 +3,8 @@
   <head>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,16 +16,38 @@
     <title>Flack</title>
   </head>
   <body>
-    <div class="container border-left border-right">
-      <h1 id="name-display"></h1>
-      <div id="name-form" style="display:none" class="alert alert-info alert-dismissible fade show" role="alert">
-        It seems you are not registered yet!
-        <form class="form-inline mt-2">
-          <input id="name-input" class="form-control mx-2" type="text" autofocus="true" placeholder="Display name">
-          <button id="name-button" type="submit" class="btn btn-outline-info" disabled>Set</button>
-        </form>
-      </div>
-      <hr />
+    <div class="container border-left border-right p-0 shadow">
+        <div  class="border-bottom p-3" id="header">
+          <h1 id="name-display">Flack</h1>
+        </div>
+        <div id="name-form" style="display:none" class="alert alert-info alert-dismissible fade show" role="alert">
+          It seems you are not registered yet!
+          <form class="form-inline mt-2">
+            <input id="name-input" class="form-control mx-2" type="text" autofocus="true" placeholder="Display name">
+            <button id="name-button" type="submit" class="btn btn-outline-info" disabled>Set</button>
+          </form>
+        </div>
+        <div class="row">
+          <div class="h-100 col-4 pre-scrollable border-right pr-0">
+            <div id="channel-list">
+              <!-- {% for channel in channels %}
+                <div class="p-3 border-bottom channel" data-action="channel-{{ channel["id"] }}">
+                  Channel {{ channel["id"] }}
+                </div>
+              {% endfor %} -->
+            </div>
+            <div id="new-channel" class="p-3 border-bottom channel" data-action="create">
+              <strong>+</strong> New channel
+            </div>
+          </div>
+
+          <div class="h-100 col-8 pl-0 align-self-center">
+            <center>
+              No messages here yet
+            </center>
+          </div>
+
+        </div>
 
     </div>
   </body>

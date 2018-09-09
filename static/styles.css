@@ -1,0 +1,23 @@
+body {
+  background-color: #eeeeee;
+}
+
+.container {
+    min-height:100vh;
+    background-color: white;
+
+}
+
+#header {
+  /* max-height: 8vh; */
+}
+
+.pre-scrollable {
+  min-height: 90vh;
+  overflow-y: scroll;
+}
+
+.channel:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
