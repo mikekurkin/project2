@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (localStorage.getItem('username')) {
     document.querySelector('#name-display').innerHTML = 'Flack: '+localStorage.getItem('username')
+    document.getElementById('name-form').remove();
   }
   else {
     document.getElementById('name-form').style.display = 'block';
@@ -13,11 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('name-button').disabled = true;
       }
     }
-    document.querySelector('#name-form > form').onsubmit = () => {
+    document.querySelector('#name-form form').onsubmit = () => {
       const name = document.getElementById('name-input').value;
       $('.alert').alert('close');
       localStorage.setItem('username', name);
       document.getElementById('name-display').innerHTML = 'Flack: '+localStorage.getItem('username');
+      document.getElementById('name-form').remove();
       return false;
     };
   };
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             release();
           }
 
-          if (!document.getElementById('new-channel-name')){
+          if (!document.getElementById('channel-name')){
             const newchannel = `
               <div class="p-3 border-bottom">
                 <input id="new-channel-name" class="form-control form-control-sm" type="text" autofocus="true" placeholder="Channel name">

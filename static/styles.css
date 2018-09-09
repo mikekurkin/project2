@@ -8,8 +8,9 @@ body {
 
 }
 
-#header {
-  /* max-height: 8vh; */
+#name-form {
+  position: absolute;
+  z-index: 1000;
 }
 
 .pre-scrollable {

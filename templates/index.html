@@ -16,38 +16,43 @@
     <title>Flack</title>
   </head>
   <body>
+
     <div class="container border-left border-right p-0 shadow">
-        <div  class="border-bottom p-3" id="header">
-          <h1 id="name-display">Flack</h1>
-        </div>
-        <div id="name-form" style="display:none" class="alert alert-info alert-dismissible fade show" role="alert">
+      <div id="name-form" style="display:none" class="row ml-5 mt-5">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
           It seems you are not registered yet!
           <form class="form-inline mt-2">
             <input id="name-input" class="form-control mx-2" type="text" autofocus="true" placeholder="Display name">
             <button id="name-button" type="submit" class="btn btn-outline-info" disabled>Set</button>
           </form>
         </div>
-        <div class="row">
-          <div class="h-100 col-4 pre-scrollable border-right pr-0">
-            <div id="channel-list">
-              <!-- {% for channel in channels %}
-                <div class="p-3 border-bottom channel" data-action="channel-{{ channel["id"] }}">
-                  Channel {{ channel["id"] }}
-                </div>
-              {% endfor %} -->
-            </div>
-            <div id="new-channel" class="p-3 border-bottom channel" data-action="create">
-              <strong>+</strong> New channel
-            </div>
-          </div>
+      </div>
 
-          <div class="h-100 col-8 pl-0 align-self-center">
-            <center>
-              No messages here yet
-            </center>
-          </div>
+      <div  class="border-bottom p-3" id="header">
+        <h1 id="name-display">Flack</h1>
+      </div>
 
+      <div class="row">
+        <div class="h-100 col-4 pre-scrollable border-right pr-0">
+          <div id="channel-list">
+            <!-- {% for channel in channels %}
+              <div class="p-3 border-bottom channel" data-action="channel-{{ channel["id"] }}">
+                Channel {{ channel["id"] }}
+              </div>
+            {% endfor %} -->
+          </div>
+          <div id="new-channel" class="p-3 border-bottom channel" data-action="create">
+            <strong>+</strong> New channel
+          </div>
         </div>
+
+        <div class="h-100 col-8 pl-0 align-self-center">
+          <center>
+            No messages here yet
+          </center>
+        </div>
+
+      </div>
 
     </div>
   </body>
