@@ -29,3 +29,8 @@ def name(data):
 @socketio.on("get channel list")
 def get_channel_list(data):
     emit("channel list", channels, broadcast=True)
+
+
+@socketio.on("get messages")
+def get_messages(data):
+    print(f"Should send messages for chat {data['id']}")

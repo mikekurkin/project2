@@ -24,15 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   };
 
-  // Connect to websocket
-  var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-
-  socket.on('connect', () => {
+  // Set button actions
+  function setActions() {
     document.querySelectorAll('.channel').forEach(button => {
-      button.onclick = () => {
+      button.onclick = function() {
         const action = button.dataset.action;
         if (action === 'create') {
-
           function release() {
             if (document.getElementById('new-channel-name')){
               document.getElementById('new-channel-name').parentNode.remove();
@@ -78,7 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
     });
+  }
+  // Connect to websocket
+  var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+  socket.on('connect', () => {
+
     socket.emit('get channel list', {});
+
   });
 
 
@@ -92,5 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     };
     document.getElementById('channel-list').innerHTML=list;
+    setActions();
   });
 });
